@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>RS Tingle</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./jquerySrc/jquery.mobile-1.4.5.min.css">
+        <link rel="stylesheet" href="./pannel.css">
+        <script src="./jquerySrc/jquery-2.1.4.min.js"></script>
+        <script src="./jquerySrc/jquery.mobile-1.4.5.min.js"></script>
+        <!--Inclusion de truc pour gg maps-->
+        <!--<script type="text/javascript" src="http://maps.google.com/maps/api/js"></script>-->
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+        <script type="text/javascript">
+            function initialize() {
+                map = new google.maps.Map(document.getElementById("map_canvas"), {
+                    zoom: 19,
+                    center: new google.maps.LatLng(48.858565, 2.347198),
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                });
+            }
+            if (navigator.geolocation)
+                var watchId = navigator.geolocation.watchPosition(successCallback,
+                        null,
+                        {enableHighAccuracy: true});
+            else
+                alert("Votre navigateur ne prend pas en compte la géolocalisation HTML5");
+
+            function successCallback(position) {
+                map.panTo(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+                    map: map
+                });
+            }
+        </script>
+    </head>
+
+    <body onload="initialize()" >
+        <div data-role="page" id="pageMain">
+            <div data-role="panel" id="myPanel">  <!-- ca c dans le panel -->
+                <h2>Select action :</h2>
+
+                <img id="QueueIcone" class="imgPannel" src="./img/QUEUE.png" alt="lolilol" height="64" width="64" />
+
+                <img id="promoIcone" class="imgPannel" src="./img/VENTE_FLASH.png" alt="lolilol" height="64" width="64" />
+
+                <br/>
+
+                <img id="mapErrorIcone" class="imgPannel" src="./img/ERROR.png" alt="lolilol" height="64" width="64" />
+
+                <img id="NoterIcone" class="imgPannel" src="./img/NOTER.png" alt="lolilol" height="64" width="64" />
+
+                <br/>
+
+                <img id="photoIcone" class="imgPannel" src="./img/PHOTO.png" alt="lolilol" height="64" width="64" />
+
+                <img id="closedIcone" class="imgPannel" src="./img/FERME.png" alt="lolilol" height="64" width="64" />
+
+                <br/>
+
+                <img id="paramIcone" class="imgPannel" src="./img/PARAMETRES.png" alt="lolilol" height="64" width="64" />
+
+            </div> 
+            
+            <!--***************************************-->
+            
+            <div class="swipeRight" data-role="header">
+                <h1>Tingle Main View !</h1>
+            </div>
+
+            <div data-role="main" class="ui-content">
+                <div id="map_canvas" style="width: 100%; height: 800px;  border-width:1px; border-style:dotted; border-color:black;">
+                </div>
+                <a href="#myPanel" class="ui-btn ui-btn-inline swipeRight">Open Panel</a>
+            </div>
+
+            <div class="swipeRight" data-role="footer">
+                <h1 class="swipeRight">Piscine MoonShot 2015 -<a> All rights reserved</a></h1>
+            </div> 
+        </div>
+        <!--***************************************-->
+        <div data-role="page" id="pageNoter">
+            <div data-role="header">
+                <h1>Rating View !</h1>
+            </div>
+
+            <div data-role="main" class="ui-content">
+                <h1 class="colorBlue">Rate this place...</h1>
+                <div data-role="main" class="ui-content">
+                    <p>
+                        Points:
+                    </p>
+                    <input id="inputTextNoter" type="range" name="points" value="0" min="0" max="5" data-highlight="true" data-popup-enabled="true">
+                    <br>
+                    <input id ="FormPageNoter" type="submit" data-inline="true" value="Submit">
+                </div>
+                <a href="#pageMain" data-transition="flip">Go to main activity</a>
+            </div>
+            <div data-role="footer">
+                <h1>Piscine MoonShot 2015 -<a> All rights reserved</a></h1>
+            </div>
+        </div>
+        <!--***************************************-->
+        <div data-role="page" id="pageParameter">
+            <div data-role="header">
+                <h1>Parameter View</h1>
+            </div>
+            <div data-role="main" class="ui-content">
+                <p>
+                    Activer le mode nuit.
+                </p>
+                <input type="checkbox" data-role="flipswitch" name="switch" id="switch" data-on-text="ON" data-off-text="OFF">
+                <br>
+                <br>
+                <a href="#pageMain" data-transition="flip">Go to main activity</a>
+            </div>
+            <div data-role="footer">
+                <h1>Piscine MoonShot 2015 -<a> All rights reserved</a></h1>
+            </div>
+        </div>
+        <!--***************************************-->
+        <div data-role="page" id="pageMapError">
+            <div data-role="header">
+                <h1>Map Error View</h1>
+            </div>
+            <div data-role="main" class="ui-content">
+                <form class="ui-filterable">
+                    <input id="myFilter" data-type="search">
+                </form>
+
+                <ul data-role="listview" data-filter="true" data-input="#myFilter">
+                    <li><a id="filterError0" href="#">Ce magasin n'existe plus.</a></li>
+                    <li><a id="filterError1" href="#">Erreur sur la carte.</a></li>
+                    <li><a id="filterError2" href="#">Données cartographiques manquantes</a></li>
+                    <li><a id="filterError3" href="#">Travaux</a></li>
+                    <li><a id="filterError4" href="#">Incidents</a></li>
+                </ul>
+                <br/>
+                <br/>
+                <a href="#pageMain" data-transition="flip">Go to main activity</a>
+            </div>
+            <div data-role="footer">
+                <h1>Piscine MoonShot 2015 -<a> All rights reserved</a></h1>
+            </div>
+        </div>
+        <!--***************************************-->
+        <div data-role="page" id="pageQueue">
+            <div data-role="header">
+                <h1>Waiting Line Quantity View</h1>
+            </div>
+            <div data-role="main" class="ui-content">
+                <br>
+                <h1 class="colorBlue">Tingle !</h1>
+                <h2>Choose the length of the waiting line.</h2>
+                <input class="inputPageQueue" type="range" name="points" id="points2" value="0" min="0" max="5" data-highlight="true" data-popup-enabled="true">
+                <br>
+                <input class="inputPageQueue" type= "text" name="Description" value="" placeholder="Enter description here !"/>
+                <br>
+                <input id="pageQueueForm" type="submit" data-inline="true" value="Submit">
+                <br>
+                <br>
+                <a href="#pageMain" data-transition="flip">Go to main activity</a>
+            </div>
+            <div data-role="footer">
+                <h1>Piscine MoonShot 2015 -<a> All rights reserved</a></h1>
+            </div>
+        </div>
+        <!--***************************************-->
+        <div data-role="page" id="pagePromo">
+            <div data-role="header">
+                <h1>Extra Promo View</h1>
+            </div>
+            <div data-role="main" class="ui-content">
+                <h1 class="colorBlue"> Promotion(s) sur :</h1>
+                <input id="inputPagePromo" type= "text" name="Description" value="" placeholder="Enter description here !"/>
+                <br>
+                <input id="pagePromoForm" type="submit" data-inline="true" value="Submit">
+                <br>
+                <br>
+                <a href="#pageMain" data-transition="flip">Go to main activity</a>
+            </div>
+            <div data-role="footer">
+                <h1>Piscine MoonShot 2015 -<a> All rights reserved</a></h1>
+            </div>
+        </div>
+        <script src="./allEvent.js"></script>
+    </body>
+</html>
+
+
+<!-- Inline - Default. Headers and footers are inline with the page content
+data-dismissible	true | false	Specifies whether the panel can be closed by clicking outside of it, or not
+data-swipe-close	true | false	Specifies whether the panel can be closed by swiping, or not
+
+
+By default, panels will appear on the left side of the screen. For the panel to appear on the right side of the screen, specify the data-position="right" attribute.
+<div data-role="panel" id="myPanel" data-position="right">
+
+You can also specify how the panel's content should be positioned according to the rest of the page when a user starts to scroll. By default, the panel will scroll with the page (but the panel's content will stay on top of the page). If you always want to display the contents of the panel, no matter how far you scroll the page, add the data-position-fixed="true" attribute to the panel:
+<div data-role="panel" id="myPanel" data-position-fixed="true">
+-->

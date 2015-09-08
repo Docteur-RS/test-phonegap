@@ -6,6 +6,12 @@
 
 URL_SERVER = 'http://localhost:8000/';
 
+$(document).on("pagecreate","#pageMain",function(){
+  $(".swipeRight").on("swiperight",function(){
+    $("#myPanel").panel("open");
+  });                       
+});
+
 var nQueue = document.getElementById("QueueIcone");
 nQueue.addEventListener("click", function () {
     location.replace("#pageQueue");
@@ -28,21 +34,19 @@ nParam.addEventListener("click", function () {
 
 var nMapError = document.getElementById("mapErrorIcone");
 nMapError.addEventListener("click", function () {
+    preFormDataFilter = [];
     location.replace("#pageMapError");
 });
 
 var nPhoto = document.getElementById("photoIcone");
 nPhoto.addEventListener("click", function () {
-    alert("lol");
-//    sendData(preFormData, 'http://localhost:8000/deleteEntries.php');
+    alert("Sorry, this option is not availble on your device.");
 });
 
 var nClosed = document.getElementById("closedIcone");
 nClosed.addEventListener("click", function () {
     alert("lol");
-//    sendData(preFormData, 'http://localhost:8000/deleteEntries.php');
 });
-
 
 /*Recupere la valeur des inputs et les ajoutes au tampons pour les envoyer pour finir au serveur*/
 var nPqf = document.getElementById("pageQueueForm");
@@ -73,11 +77,89 @@ nPpf.addEventListener("click", function () {
     var preFormData = [];
     preFormData.push(sTextValue);
     console.log("preFormData = " + preFormData);
-    sendData(preFormData, URL_SERVER + "queueForm.php");//changer fichier php
+    sendData(preFormData, URL_SERVER + "promoForm.php");
+});
+
+/*Tout le basard pas propre pour le filter*/
+var filter0 = document.getElementById("filterError0");
+var filter1 = document.getElementById("filterError1");
+var filter2 = document.getElementById("filterError2");
+var filter3 = document.getElementById("filterError3");
+var filter4 = document.getElementById("filterError4");
+
+filter0.addEventListener("click", function () {
+    var sTextValue = filter0.innerHTML;
+    var preFormDataFilter = [];
+    preFormDataFilter.push(sTextValue);
+    console.log("preFormDataFilter = " + preFormDataFilter);
+    sendData(preFormDataFilter, URL_SERVER + "errorForm.php");
+});
+filter1.addEventListener("click", function () {
+    var sTextValue = filter1.innerHTML;
+    var preFormDataFilter = [];
+    preFormDataFilter.push(sTextValue);
+    console.log("preFormDataFilter = " + preFormDataFilter);
+    sendData(preFormDataFilter, URL_SERVER + "errorForm.php");
+});
+filter2.addEventListener("click", function () {
+    var sTextValue = filter2.innerHTML;
+    var preFormDataFilter = [];
+    preFormDataFilter.push(sTextValue);
+    console.log("preFormDataFilter = " + preFormDataFilter);
+    sendData(preFormDataFilter, URL_SERVER + "errorForm.php");
+});
+filter3.addEventListener("click", function () {
+    var sTextValue = filter3.innerHTML;
+    var preFormDataFilter = [];
+    preFormDataFilter.push(sTextValue);
+    console.log("preFormDataFilter = " + preFormDataFilter);
+    sendData(preFormDataFilter, URL_SERVER + "errorForm.php");
+});
+filter4.addEventListener("click", function () {
+    var sTextValue = filter4.innerHTML;
+    var preFormDataFilter = [];
+    preFormDataFilter.push(sTextValue);
+    console.log("preFormDataFilter = " + preFormDataFilter);
+    sendData(preFormDataFilter, URL_SERVER + "errorForm.php");
+});
+
+var nFpn = document.getElementById("FormPageNoter");
+nFpn.addEventListener("click", function () {
+    var lol = document.getElementById("inputTextNoter");
+    var sTextValue = lol.value;
+    var preFormData = [];
+    preFormData.push(sTextValue);
+    console.log("preFormData = " + preFormData);
+    sendData(preFormData, URL_SERVER + "noteForm.php");//changer fichier php
 });
 
 
+function sendData(data, path) {
+    var XHR = new XMLHttpRequest();
+    var FD = new FormData();
 
+    // We push our data into our FormData object
+    for (name in data) {
+        FD.append(name, data[name]);
+    }
+
+    // We define what will happen if the data are successfully sent
+    XHR.addEventListener('load', function (event) {
+        alert('Yeah! Data sent and response loaded.');
+    });
+
+    // We define what will happen in case of error
+    XHR.addEventListener('error', function (event) {
+        alert('Oups! Something goes wrong.');
+    });
+
+    // We setup our request
+    XHR.open('POST', path);
+
+    // We just send our FormData object, HTTP headers are set automatically
+    XHR.send(FD);
+//  return (False)//cancel form action
+}
 
 
 
