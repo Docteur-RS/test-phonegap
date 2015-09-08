@@ -8,9 +8,9 @@
         <script src="./jquerySrc/jquery-2.1.4.min.js"></script>
         <script src="./jquerySrc/jquery.mobile-1.4.5.min.js"></script>
         <!--Inclusion de truc pour gg maps-->
-        <!--<script type="text/javascript" src="http://maps.google.com/maps/api/js"></script>-->
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
         <script type="text/javascript">
+            personPos = [];
             function initialize() {
                 map = new google.maps.Map(document.getElementById("map_canvas"), {
                     zoom: 19,
@@ -31,6 +31,9 @@
                     position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
                     map: map
                 });
+                alert("Latitude : " + position.coords.latitude + ", longitude : " + position.coords.longitude);
+                personPos[0] =  position.coords.latitude;
+                personPos[1] = position.coords.longitude;
             }
         </script>
     </head>
@@ -69,7 +72,7 @@
             </div>
 
             <div data-role="main" class="ui-content">
-                <div id="map_canvas" style="width: 100%; height: 800px;  border-width:1px; border-style:dotted; border-color:black;">
+                <div id="map_canvas" style="width: 100%; height: 600px;  border-width:1px; border-style:dotted; border-color:black;">
                 </div>
                 <a href="#myPanel" class="ui-btn ui-btn-inline swipeRight">Open Panel</a>
             </div>

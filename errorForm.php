@@ -6,10 +6,7 @@
  * and open the template in the editor.
  */
 
-$oMysqli = new mysqli("localhost", "root", "", "tingle");
-if (($link = $oMysqli->connect_errno)) {
-    echo "Echec lors de la connexion à MySQL : (" . $oMysqli->connect_errno . ") " . $oMysqli->connect_error;
-}
+require('mysqlConnect.php');
 
 $count = 0;
 $description = "";

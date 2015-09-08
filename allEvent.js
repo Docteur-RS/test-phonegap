@@ -9,7 +9,7 @@ URL_SERVER = 'http://localhost:8000/';
 $(document).on("pagecreate","#pageMain",function(){
   $(".swipeRight").on("swiperight",function(){
     $("#myPanel").panel("open");
-  });                       
+  });
 });
 
 var nQueue = document.getElementById("QueueIcone");
