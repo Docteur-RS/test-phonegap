@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>RS Tingle</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./jquerySrc/jquery.mobile-1.4.5.min.css">
+        <link rel="stylesheet" href="./pannel.css">
+        <script src="./jquerySrc/jquery-2.1.4.min.js"></script>
+        <script src="./jquerySrc/jquery.mobile-1.4.5.min.js"></script>
+    </head>
+
+    <body>
+        <div data-role="page" id="pageMain">
+
+            <div data-role="panel" id="myPanel">  <!-- ca c dans le panel -->
+                <h2>Select action :</h2>
+
+                <img id="QueueIcone" class="imgPannel" src="./img/QUEUE.png" alt="lolilol" height="64" width="64" />
+
+                <img id="promoIcone" class="imgPannel" src="./img/VENTE_FLASH.png" alt="lolilol" height="64" width="64" />
+
+                <br/>
+
+                <img id="mapErrorIcone" class="imgPannel" src="./img/ERROR.png" alt="lolilol" height="64" width="64" />
+
+                <img id="NoterIcone" class="imgPannel" src="./img/NOTER.png" alt="lolilol" height="64" width="64" />
+
+                <br/>
+
+                <img id="photoIcone" class="imgPannel" src="./img/PHOTO.png" alt="lolilol" height="64" width="64" />
+
+                <img id="closedIcone" class="imgPannel" src="./img/FERME.png" alt="lolilol" height="64" width="64" />
+
+                <br/>
+
+                <img id="paramIcone" class="imgPannel" src="./img/PARAMETRES.png" alt="lolilol" height="64" width="64" />
+
+            </div> 
+            <!--***************************************-->
+            <div data-role="header">
+                <h1>Standard Page Header</h1>
+            </div>
+
+            <div data-role="main" class="ui-content">
+                <p>ICI FAUT AFFICHER GOOGLE MAP</p>
+                <a href="#myPanel" class="ui-btn ui-btn-inline">Open Panel</a>
+            </div>
+
+            <div data-role="footer">
+                <h1>Piscine MoonShot 2015 -<a> All rights reserved</a></h1>
+            </div> 
+        </div>
+        <!--***************************************-->
+        <div data-role="page" id="pageNoter">
+            <div data-role="header">
+                <h1>Welcome To My Homepage</h1>
+            </div>
+
+            <div data-role="main" class="ui-content">
+                <p>Choose how much file d'attente by scaling up to 4.</p>
+                <div data-role="main" class="ui-content">
+                    <form method="post" action="demoform.asp">
+                        <label for="points">Points:</label>
+                        <input type="range" name="points" id="points" value="0" min="0" max="4" data-highlight="true" data-popup-enabled="true">>
+                        <input type="submit" data-inline="true" value="Submit">
+                    </form>
+                </div>
+                <a href="#pageMain" data-transition="flip">Go to main activity</a>
+            </div>
+            <div data-role="footer">
+                <h1>Piscine MoonShot 2015 -<a> All rights reserved</a></h1>
+            </div>
+        </div>
+        <!--***************************************-->
+        <div data-role="page" id="pageParameter">
+            <div data-role="header">
+                <h1>Welcome To My Homepage</h1>
+            </div>
+            <div data-role="main" class="ui-content">
+                <p>
+                    Activer le mode nuit.
+                </p>
+                <input type="checkbox" data-role="flipswitch" name="switch" id="switch" data-on-text="ON" data-off-text="OFF">
+                <br>
+                <a href="#pageMain" data-transition="flip">Go to main activity</a>
+            </div>
+            <div data-role="footer">
+                <h1>Piscine MoonShot 2015 -<a> All rights reserved</a></h1>
+            </div>
+        </div>
+        <!--***************************************-->
+        <div data-role="page" id="pageMapError">
+            <div data-role="header">
+                <h1>Welcome To My Homepage</h1>
+            </div>
+            <div data-role="main" class="ui-content">
+                <form class="ui-filterable">
+                    <input id="myFilter" data-type="search">
+                </form>
+
+                <ul data-role="listview" data-filter="true" data-input="#myFilter">
+                    <li><a href="#">Ce magasin n'existe plus.</a></li>
+                    <li><a href="#">Erreur sur la carte.</a></li>
+                    <li><a href="#">Données cartographiques manquantes</a></li>
+                    <li><a href="#">Travaux</a></li>
+                    <li><a href="#">Incidents</a></li>
+                </ul>
+                <br/>
+                <br/>
+                <a href="#pageMain" data-transition="flip">Go to main activity</a>
+            </div>
+            <div data-role="footer">
+                <h1>Piscine MoonShot 2015 -<a> All rights reserved</a></h1>
+            </div>
+        </div>
+        <!--***************************************-->
+        <div data-role="page" id="pageQueue">
+            <div data-role="header">
+                <h1>Welcome To My Homepage</h1>
+            </div>
+            <div data-role="main" class="ui-content">
+                <label for="points">Noter:</label>
+                <input class="inputPageQueue" type="range" name="points" id="points2" value="0" min="0" max="5" data-highlight="true" data-popup-enabled="true">
+                <br>
+                <input class="inputPageQueue" type= "text" name="Description" value="" placeholder="Enter description here !"/>
+                <br>
+                <input id="pageQueueForm" type="submit" data-inline="true" value="Submit">
+                <a href="#pageMain" data-transition="flip">Go to main activity</a>
+            </div>
+            <div data-role="footer">
+                <h1>Piscine MoonShot 2015 -<a> All rights reserved</a></h1>
+            </div>
+        </div>
+        <!--***************************************-->
+        <div data-role="page" id="pagePromo">
+            <div data-role="header">
+                <h1>Welcome To My Homepage</h1>
+            </div>
+            <div data-role="main" class="ui-content">
+                <label for="points">Noter:</label>
+                Promotion(s) sur :
+                <input id="inputPagePromo" type= "text" name="Description" value="" placeholder="Enter description here !"/>
+                <br>
+                <input id="pagePromoForm" type="submit" data-inline="true" value="Submit">
+                <a href="#pageMain" data-transition="flip">Go to main activity</a>
+            </div>
+            <div data-role="footer">
+                <h1>Piscine MoonShot 2015 -<a> All rights reserved</a></h1>
+            </div>
+        </div>
+        <script src="./allEvent.js"></script>
+    </body>
+</html>
+
+
+<!-- Inline - Default. Headers and footers are inline with the page content
+data-dismissible	true | false	Specifies whether the panel can be closed by clicking outside of it, or not
+data-swipe-close	true | false	Specifies whether the panel can be closed by swiping, or not
+
+
+By default, panels will appear on the left side of the screen. For the panel to appear on the right side of the screen, specify the data-position="right" attribute.
+<div data-role="panel" id="myPanel" data-position="right">
+
+You can also specify how the panel's content should be positioned according to the rest of the page when a user starts to scroll. By default, the panel will scroll with the page (but the panel's content will stay on top of the page). If you always want to display the contents of the panel, no matter how far you scroll the page, add the data-position-fixed="true" attribute to the panel:
+<div data-role="panel" id="myPanel" data-position-fixed="true">
+-->
