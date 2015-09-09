@@ -4,13 +4,16 @@
  * and open the template in the editor.
  */
 
+$.support.cors = true;
+ $.mobile.allowCrossDomainPages = true;
+ 
 //URL_SERVER = 'http://localhost:8000/';
 URL_SERVER = 'http://rs.alpha14.com/tingle/';
 
-$(document).on("pagecreate","#pageMain",function(){
-  $(".swipeRight").on("swiperight",function(){
-    $("#myPanel").panel("open");
-  });
+$(document).on("pagecreate", "#pageMain", function () {
+    $(".swipeRight").on("swiperight", function () {
+        $("#myPanel").panel("open");
+    });
 });
 
 var nQueue = document.getElementById("QueueIcone");
@@ -67,7 +70,7 @@ nPqf.addEventListener("click", function () {
     preFormData.push(iSliderValue);
     preFormData.push(sTextValue);
     console.log("preFormData = " + preFormData);
-    sendData(preFormData, URL_SERVER + "queueForm.php:8080");
+    sendData(preFormData, URL_SERVER + "queueForm.php");
 });
 
 /*Récupere l'input text de la page promo*/
@@ -159,7 +162,6 @@ function sendData(data, path) {
 
     // We just send our FormData object, HTTP headers are set automatically
     XHR.send(FD);
-//  return (False)//cancel form action
 }
 
 
