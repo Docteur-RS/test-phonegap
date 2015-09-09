@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 
-URL_SERVER = 'http://localhost:8000/';
+//URL_SERVER = 'http://localhost:8000/';
+URL_SERVER = 'http://rs.alpha14.com/tingle/';
 
 $(document).on("pagecreate","#pageMain",function(){
   $(".swipeRight").on("swiperight",function(){
@@ -66,7 +67,7 @@ nPqf.addEventListener("click", function () {
     preFormData.push(iSliderValue);
     preFormData.push(sTextValue);
     console.log("preFormData = " + preFormData);
-    sendData(preFormData, URL_SERVER + "queueForm.php");
+    sendData(preFormData, URL_SERVER + "queueForm.php:8080");
 });
 
 /*Récupere l'input text de la page promo*/
