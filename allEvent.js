@@ -50,7 +50,7 @@ nPhoto.addEventListener("click", function () {
 
 var nClosed = document.getElementById("closedIcone");
 nClosed.addEventListener("click", function () {
-    alert("lol");
+    alert("Not yet implemented, sorry.");
 });
 
 var nReturn = document.getElementsByClassName("goHome");
@@ -79,7 +79,7 @@ nPqf.addEventListener("click", function () {
     preFormData.push(sTextValue);
     preFormData.push(personPos[0]);
     preFormData.push(personPos[1]);
-    console.log("preFormData = " + preFormData);
+    //console.log("preFormData = " + preFormData);
     sendData(preFormData, URL_SERVER + "queueForm.php");
 });
 
@@ -92,7 +92,7 @@ nPpf.addEventListener("click", function () {
     preFormData.push(sTextValue);
     preFormData.push(personPos[0]);
     preFormData.push(personPos[1]);
-    console.log("preFormData = " + preFormData);
+    //console.log("preFormData = " + preFormData);
     sendData(preFormData, URL_SERVER + "promoForm.php");
 });
 
@@ -109,7 +109,7 @@ filter0.addEventListener("click", function () {
     preFormDataFilter.push(sTextValue);
     preFormDataFilter.push(personPos[0]);
     preFormDataFilter.push(personPos[1]);
-    console.log("preFormDataFilter = " + preFormDataFilter);
+    //console.log("preFormDataFilter = " + preFormDataFilter);
     sendData(preFormDataFilter, URL_SERVER + "errorForm.php");
 });
 filter1.addEventListener("click", function () {
@@ -118,7 +118,7 @@ filter1.addEventListener("click", function () {
     preFormDataFilter.push(sTextValue);
     preFormDataFilter.push(personPos[0]);
     preFormDataFilter.push(personPos[1]);
-    console.log("preFormDataFilter = " + preFormDataFilter);
+//    console.log("preFormDataFilter = " + preFormDataFilter);
     sendData(preFormDataFilter, URL_SERVER + "errorForm.php");
 });
 filter2.addEventListener("click", function () {
@@ -127,7 +127,7 @@ filter2.addEventListener("click", function () {
     preFormDataFilter.push(sTextValue);
     preFormDataFilter.push(personPos[0]);
     preFormDataFilter.push(personPos[1]);
-    console.log("preFormDataFilter = " + preFormDataFilter);
+//    console.log("preFormDataFilter = " + preFormDataFilter);
     sendData(preFormDataFilter, URL_SERVER + "errorForm.php");
 });
 filter3.addEventListener("click", function () {
@@ -136,7 +136,7 @@ filter3.addEventListener("click", function () {
     preFormDataFilter.push(sTextValue);
     preFormDataFilter.push(personPos[0]);
     preFormDataFilter.push(personPos[1]);
-    console.log("preFormDataFilter = " + preFormDataFilter);
+//    console.log("preFormDataFilter = " + preFormDataFilter);
     sendData(preFormDataFilter, URL_SERVER + "errorForm.php");
 });
 filter4.addEventListener("click", function () {
@@ -145,7 +145,7 @@ filter4.addEventListener("click", function () {
     preFormDataFilter.push(sTextValue);
     preFormDataFilter.push(personPos[0]);
     preFormDataFilter.push(personPos[1]);
-    console.log("preFormDataFilter = " + preFormDataFilter);
+//    console.log("preFormDataFilter = " + preFormDataFilter);
     sendData(preFormDataFilter, URL_SERVER + "errorForm.php");
 });
 
@@ -157,7 +157,7 @@ nFpn.addEventListener("click", function () {
     preFormData.push(sTextValue);
     preFormData.push(personPos[0]);
     preFormData.push(personPos[1]);
-    console.log("preFormData = " + preFormData);
+//    console.log("preFormData = " + preFormData);
     sendData(preFormData, URL_SERVER + "noteForm.php");
 });
 
@@ -169,7 +169,7 @@ function sendData(data, path) {
     function ajaxSuccess() {
         if (this.responseText !== "")
             LAST_RESPONSE = JSON.parse(this.responseText);
-        console.log(LAST_RESPONSE);
+//        console.log(LAST_RESPONSE);
     }
 
     XHR.onload = ajaxSuccess;

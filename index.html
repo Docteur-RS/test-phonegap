@@ -47,7 +47,6 @@
                     image = "_QUEUE";
                 else
                     image = "";
-                console.log("image = " + image);
                 var color = "";
 
                 if (image == "_NOTE")
@@ -64,17 +63,15 @@
                     if (force == 0)
                         color = "VERT";
                     else if (force == 5)
-                        color = "VERT";
-                    else
                         color = "MARRON";
+                    else
+                        color = "ORANGE";
                 }
                 else if (image == "")
                     color = "GRIS";
                 else
                     color = "Gris";
-                console.log("color = " + color);
                 var path_image = "./img/POI_" + color + image + ".png";
-                console.log("path image = " + path_image);
 
                 var image = {
                     url: path_image,
@@ -102,7 +99,7 @@
 
                 for (var i = 0; i < LAST_RESPONSE.length; i++)
                 {
-                    console.log("position = " + i + " all force = " + LAST_RESPONSE[i]["force"]);
+//                    console.log("position = " + i + " all force = " + LAST_RESPONSE[i]["force"]);
                     var mark = new google.maps.Marker({
                         position: new google.maps.LatLng(LAST_RESPONSE[i]["latitude"], LAST_RESPONSE[i]["longitude"]),
                         map: map,
@@ -113,8 +110,7 @@
 
                 var innutile = [];
                 sendData("innutile", URL_SERVER + "getDbData.php");
-                console.log(LAST_RESPONSE);
-//                alert("Latitude : " + position.coords.latitude + ", longitude : " + position.coords.longitude);
+//                console.log(LAST_RESPONSE);
                 personPos[0] = position.coords.latitude;
                 personPos[1] = position.coords.longitude;
             }
@@ -124,7 +120,11 @@
     <body onload="initialize()" >
         <div data-role="page" id="pageMain">
             <div data-role="panel" id="myPanel">  <!-- ca c dans le panel -->
+
+                <img class="imgPannel" src="./img/Tingle.png" alt="lolilol" height="64" width="100" />
+                <br>
                 <h2>Select action :</h2>
+
 
                 <img id="QueueIcone" class="imgPannel" src="./img/QUEUE.png" alt="lolilol" height="64" width="64" />
 
