@@ -5,10 +5,11 @@
  */
 
 $.support.cors = true;
- $.mobile.allowCrossDomainPages = true;
- 
+$.mobile.allowCrossDomainPages = true;
+
 //URL_SERVER = 'http://localhost:8000/';
 URL_SERVER = 'http://rs.alpha14.com/tingle/';
+LAST_RESPONSE = "";
 
 $(document).on("pagecreate", "#pageMain", function () {
     $(".swipeRight").on("swiperight", function () {
@@ -52,6 +53,13 @@ nClosed.addEventListener("click", function () {
     alert("lol");
 });
 
+var nReturn = document.getElementsByClassName("goHome");
+for (i = 0; i < nReturn.length; i++) {
+    nReturn[i].addEventListener("click", function () {
+        location.replace("#pageMain");
+    });
+}
+
 /*Recupere la valeur des inputs et les ajoutes au tampons pour les envoyer pour finir au serveur*/
 var nPqf = document.getElementById("pageQueueForm");
 nPqf.addEventListener("click", function () {
@@ -69,6 +77,8 @@ nPqf.addEventListener("click", function () {
     var preFormData = [];
     preFormData.push(iSliderValue);
     preFormData.push(sTextValue);
+    preFormData.push(personPos[0]);
+    preFormData.push(personPos[1]);
     console.log("preFormData = " + preFormData);
     sendData(preFormData, URL_SERVER + "queueForm.php");
 });
@@ -80,6 +90,8 @@ nPpf.addEventListener("click", function () {
     var sTextValue = lol.value;
     var preFormData = [];
     preFormData.push(sTextValue);
+    preFormData.push(personPos[0]);
+    preFormData.push(personPos[1]);
     console.log("preFormData = " + preFormData);
     sendData(preFormData, URL_SERVER + "promoForm.php");
 });
@@ -95,6 +107,8 @@ filter0.addEventListener("click", function () {
     var sTextValue = filter0.innerHTML;
     var preFormDataFilter = [];
     preFormDataFilter.push(sTextValue);
+    preFormDataFilter.push(personPos[0]);
+    preFormDataFilter.push(personPos[1]);
     console.log("preFormDataFilter = " + preFormDataFilter);
     sendData(preFormDataFilter, URL_SERVER + "errorForm.php");
 });
@@ -102,6 +116,8 @@ filter1.addEventListener("click", function () {
     var sTextValue = filter1.innerHTML;
     var preFormDataFilter = [];
     preFormDataFilter.push(sTextValue);
+    preFormDataFilter.push(personPos[0]);
+    preFormDataFilter.push(personPos[1]);
     console.log("preFormDataFilter = " + preFormDataFilter);
     sendData(preFormDataFilter, URL_SERVER + "errorForm.php");
 });
@@ -109,6 +125,8 @@ filter2.addEventListener("click", function () {
     var sTextValue = filter2.innerHTML;
     var preFormDataFilter = [];
     preFormDataFilter.push(sTextValue);
+    preFormDataFilter.push(personPos[0]);
+    preFormDataFilter.push(personPos[1]);
     console.log("preFormDataFilter = " + preFormDataFilter);
     sendData(preFormDataFilter, URL_SERVER + "errorForm.php");
 });
@@ -116,6 +134,8 @@ filter3.addEventListener("click", function () {
     var sTextValue = filter3.innerHTML;
     var preFormDataFilter = [];
     preFormDataFilter.push(sTextValue);
+    preFormDataFilter.push(personPos[0]);
+    preFormDataFilter.push(personPos[1]);
     console.log("preFormDataFilter = " + preFormDataFilter);
     sendData(preFormDataFilter, URL_SERVER + "errorForm.php");
 });
@@ -123,6 +143,8 @@ filter4.addEventListener("click", function () {
     var sTextValue = filter4.innerHTML;
     var preFormDataFilter = [];
     preFormDataFilter.push(sTextValue);
+    preFormDataFilter.push(personPos[0]);
+    preFormDataFilter.push(personPos[1]);
     console.log("preFormDataFilter = " + preFormDataFilter);
     sendData(preFormDataFilter, URL_SERVER + "errorForm.php");
 });
@@ -133,14 +155,24 @@ nFpn.addEventListener("click", function () {
     var sTextValue = lol.value;
     var preFormData = [];
     preFormData.push(sTextValue);
+    preFormData.push(personPos[0]);
+    preFormData.push(personPos[1]);
     console.log("preFormData = " + preFormData);
-    sendData(preFormData, URL_SERVER + "noteForm.php");//changer fichier php
+    sendData(preFormData, URL_SERVER + "noteForm.php");
 });
 
 
 function sendData(data, path) {
     var XHR = new XMLHttpRequest();
     var FD = new FormData();
+
+    function ajaxSuccess() {
+        if (this.responseText !== "")
+            LAST_RESPONSE = JSON.parse(this.responseText);
+        console.log(LAST_RESPONSE);
+    }
+
+    XHR.onload = ajaxSuccess;
 
     // We push our data into our FormData object
     for (name in data) {
@@ -149,7 +181,7 @@ function sendData(data, path) {
 
     // We define what will happen if the data are successfully sent
     XHR.addEventListener('load', function (event) {
-        alert('Yeah! Data sent and response loaded.');
+//        alert('Yeah! Data sent and response loaded.');
     });
 
     // We define what will happen in case of error
@@ -159,6 +191,7 @@ function sendData(data, path) {
 
     // We setup our request
     XHR.open('POST', path);
+
 
     // We just send our FormData object, HTTP headers are set automatically
     XHR.send(FD);
