@@ -68,10 +68,12 @@
                         color = "ORANGE";
                 }
                 else if (image == "")
-                    color = "GRIS";
-                else
                     color = "Gris";
+                else
+                    color = "GRIS";
                 var path_image = "./img/POI_" + color + image + ".png";
+                console.log("path = " + path_image);
+
 
                 var image = {
                     url: path_image,
@@ -84,6 +86,7 @@
                 return image;
             }
 
+
             function successCallback(position) {
                 map.panTo(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
 //                var marker = new google.maps.Marker({
@@ -93,19 +96,19 @@
 //                });
 
                 for (var i = 0; i < listMarkers.length; i++) {
-                    listMarkers.pop().setMap(null);
+                    console.log("hey !");
+                    listMarkers[i].setMap(null);
                 }
                 listMarkers = [];
 
                 for (var i = 0; i < LAST_RESPONSE.length; i++)
                 {
-//                    console.log("position = " + i + " all force = " + LAST_RESPONSE[i]["force"]);
                     var mark = new google.maps.Marker({
                         position: new google.maps.LatLng(LAST_RESPONSE[i]["latitude"], LAST_RESPONSE[i]["longitude"]),
                         map: map,
                         icon: chargeImage(LAST_RESPONSE[i]["type"], LAST_RESPONSE[i]["force"])
                     });
-                    listMarkers.push();
+                    listMarkers.push(mark);
                 }
 
                 var innutile = [];
@@ -121,7 +124,7 @@
         <div data-role="page" id="pageMain">
             <div data-role="panel" id="myPanel">  <!-- ca c dans le panel -->
 
-                <img class="imgPannel" src="./img/Tingle.png" alt="lolilol" height="64" width="100" />
+                <img class="imgPannel" src="./img/TINGLE.png" alt="lolilol" height="64" width="100" />
                 <br>
                 <h2>Select action :</h2>
 
